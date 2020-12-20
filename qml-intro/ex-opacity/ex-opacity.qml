@@ -1,42 +1,50 @@
-/*************************************************************************
- *
- * Copyright (c) 2017-2019, Klaralvdalens Datakonsult AB (KDAB)
- * All rights reserved.
- *
- * See the LICENSE.txt file shipped along with this file for the license.
- *
- *************************************************************************/
-
-import QtQuick 2.0
+import QtQuick 2.15
 
 Rectangle {
-    width: 400; height: 400
+    width: 400
+    height: 400
     color: "#00a3fc"
-//--> slide
-    Rectangle {
-        x: 50; y: 50; width: 200; height: 300
-        color: "white"
-        opacity: 0.5
-
-        Rectangle {
-            x: 100; y: 25; width: 200; height: 50
-            color: "red"
-            opacity: 0.5
-        }
-        Rectangle {
-            x: 100; y: 90; width: 200; height: 50
-            color: "red"
-        }
-    }
 
     Rectangle {
-       x: 150; y: 210; width: 200; height: 50
-       color: "red"
-       opacity: 0.5
+        x: 50
+	y: 50
+	width: parent.width / 2
+	height: parent.height / 4 * 3
+	color: "white"
+	opacity: 0.5
+
+        Rectangle {
+	    x: parent.width / 2
+	    y: x / 4
+	    width: parent.width
+	    height: width / 4
+	    color: "red"
+	    opacity: 0.5
+        }
+
+        Rectangle {
+	    x: parent.width / 2
+	    y: x - 10
+	    width: parent.width
+	    height: width / 4
+	    color: "red"
+        }
     }
+
     Rectangle {
-       x: 150; y: 275; width: 200; height: 50
-       color: "red"
+        x: 150
+	y: 210
+	width: parent.width / 2
+	height: parent.width / 8
+	color: "red"
+	opacity: 0.5
     }
-//<-- slide
+
+    Rectangle {
+        x: 150
+	y: 275
+        width: parent.width / 2
+	height: parent.width / 8
+	color: "red"
+    }
 }
