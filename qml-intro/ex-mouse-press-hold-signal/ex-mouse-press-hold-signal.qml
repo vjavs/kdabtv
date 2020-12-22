@@ -1,27 +1,18 @@
-/*************************************************************************
- *
- * Copyright (c) 2013-2019, Klaralvdalens Datakonsult AB (KDAB)
- * All rights reserved.
- *
- * See the LICENSE.txt file shipped along with this file for the license.
- *
- *************************************************************************/
-
-import QtQuick 2.0
+import QtQuick 2.15
 
 Rectangle {
-    width: 500; height: 200; color: "lightblue"
+    width: 500; height: 200; color: "lightblue";
 
     Text {
         anchors.centerIn: parent
-        text: "Press and hold me"; font.pixelSize: 48
+	text: "Press and hold me"; font.pixelSize: 48
 
         property bool isActive: false
-        color: isActive ? "green" : "black"
+	color: isActive ? "green" : "black"
 
         MouseArea {
-            anchors.fill: parent
-            onPressAndHold: parent.isActive = !parent.isActive
+	    anchors.fill: parent
+	    onPressAndHold: parent.isActive ^= true
         }
     }
 }
