@@ -1,22 +1,14 @@
-/*************************************************************************
- *
- * Copyright (c) 2013-2019, Klaralvdalens Datakonsult AB (KDAB)
- * All rights reserved.
- *
- * See the LICENSE.txt file shipped along with this file for the license.
- *
- *************************************************************************/
-
-import QtQuick 2.0
+import QtQuick 2.15
 
 Rectangle {
-    width: 400; height: 400; color: "#00a3fc"
+    width: 400; height: 400;
+    color: "#00a3fc";
     focus: true
 
     Image {
-        id: rocket
-        anchors.centerIn: parent
-        source: "../images/rocket.svg"
+       id: rocket
+       anchors.centerIn: parent
+       source: "../images/rocket.svg"
     }
 
     Keys.onLeftPressed:
