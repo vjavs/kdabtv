@@ -1,13 +1,4 @@
-/*************************************************************************
- *
- * Copyright (c) 2015-2019, Klaralvdalens Datakonsult AB (KDAB)
- * All rights reserved.
- *
- * See the LICENSE.txt file shipped along with this file for the license.
- *
- *************************************************************************/
-
-import QtQuick 2.0
+import QtQuick 2.15
 
 Item {
     id: root
@@ -21,14 +12,13 @@ Item {
 
     BorderImage {
         id: background
-        anchors.fill: parent
-        border { left: root.__margin; right: root.__margin }
-        source: "images/button.png"
+	anchors.fill: parent
+	border { left: root.__margin; right: root.__margin }
+	source: "images/button.png"
         Text {
-            id: label
-            anchors.centerIn: parent
-            font.pixelSize: 30
+	    id: label
+	    anchors.centerIn: parent
+	    font.pixelSize: 30
         }
-    }
-
+   }
 }
