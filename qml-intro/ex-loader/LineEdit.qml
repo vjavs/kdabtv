@@ -1,14 +1,4 @@
-/*************************************************************************
- *
- * Copyright (c) 2010, Nokia Corporation and/or its subsidiary(-ies).
- * Copyright (c) 2010-2019, Klaralvdalens Datakonsult AB (KDAB)
- * All rights reserved.
- *
- * See the LICENSE.txt file shipped along with this file for the license.
- *
- *************************************************************************/
-
-import QtQuick 2.0
+import QtQuick 2.15
 
 Rectangle {
     property alias text: input.text
@@ -20,13 +10,13 @@ Rectangle {
 
     TextInput {
         id: input
-        anchors.fill: parent
-        anchors.margins: 2
-        color: focus ? "black" : "gray"
-        font.pixelSize: parent.height - 4
+	anchors.fill: parent
+	anchors.margins: 2
+	color: focus ? "black" : "gray"
+	font.pixelSize: parent.height - 4
 
         Keys.onReturnPressed: {
-            parent.returnPressed( text )
+	    parent.returnPressed( text )
         }
     }
 }
