@@ -1,13 +1,4 @@
-/*************************************************************************
- *
- * Copyright (c) 2015-2019, Klaralvdalens Datakonsult AB (KDAB)
- * All rights reserved.
- *
- * See the LICENSE.txt file shipped along with this file for the license.
- *
- *************************************************************************/
-
-import QtQuick 2.0
+import QtQuick 2.15
 
 Rectangle {
     id: root
@@ -21,21 +12,21 @@ Rectangle {
 
     Image {
         id: image
-        width: root.width
-        height: root.height
-        anchors.centerIn: parent
-        smooth: true
-        scale: 0.8
-        MouseArea {
-            anchors.fill: parent
-            onClicked: root.clicked()
+	width: root.width
+	height: root.height
+	anchors.centerIn: parent
+	smooth: true
+	scale: 0.8
+	MouseArea {
+	    anchors.fill: parent
+	    onClicked: root.clicked()
         }
     }
 
     Text {
         id: label
-        width: parent.width
-        anchors.bottom: parent.bottom
-        horizontalAlignment: Text.AlignHCenter
+	width: parent.width
+	anchors.bottom: parent.bottom
+	horizontalAlignment: Text.AlignHCenter
     }
 }
