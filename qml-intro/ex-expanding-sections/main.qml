@@ -1,13 +1,4 @@
-/*************************************************************************
- *
- * Copyright (c) 2013-2019, Klaralvdalens Datakonsult AB (KDAB)
- * All rights reserved.
- *
- * See the LICENSE.txt file shipped along with this file for the license.
- *
- *************************************************************************/
-
-import QtQuick 2.0
+import QtQuick 2.15
 
 ListView {
     id: view
@@ -25,64 +16,64 @@ ListView {
         readonly property ListView __lv: ListView.view
 
         anchors {
-            left: parent.left
-            leftMargin: 2
+	    left: parent.left
+	    leftMargin: 2
 
             right: parent.right
-            rightMargin: 2
+	    rightMargin: 2
         }
 
-        expanded: view.isSectionExpanded( model.team )
+        expanded: __lv.isSectionExpanded(model.team)
 
         MouseArea {
-            anchors.fill: parent
-            onClicked: __lv.currentIndex = index
+	    anchors.fill: parent
+	    onClicked: __lv.currentIndex = index
         }
     }
 
     highlight: HighlightDelegate {
         width: parent.width
-        anchors {
-            left: parent.left
-            right: parent.right
+	anchors {
+	    left: parent.left
+	    right: parent.right
         }
     }
 
     section {
         property: "team"
-        criteria: ViewSection.FullString
+	criteria: ViewSection.FullString
 
         delegate: SectionDelegate {
-            anchors {
-                left: parent.left
-                right: parent.right
+	    anchors {
+	        left: parent.left
+		right: parent.right
             }
 
             text: section
 
-            onClicked: view.toggleSection( section )
+            onClicked: view.toggleSection(section)
         }
     }
 
-    function isSectionExpanded( section ) {
+    function isSectionExpanded(section) {
         return !(section in collapsed);
     }
 
-    function showSection( section ) {
+    function showSection(section) {
         delete collapsed[section]
-        /*emit*/ collapsedChanged();
+	collapsedChanged(); // emit signal
     }
 
-    function hideSection( section ) {
+    function hideSection(section) {
         collapsed[section] = true
-        /*emit*/ collapsedChanged();
+	collapsedChanged(); // emit signal
     }
 
-    function toggleSection( section ) {
-        if ( isSectionExpanded( section ) ) {
-            hideSection( section )
+    function toggleSection(section) {
+        if (isSectionExpanded(section)) {
+	    hideSection(section)
         } else {
-            showSection( section )
+	    showSection(section)
         }
     }
 }

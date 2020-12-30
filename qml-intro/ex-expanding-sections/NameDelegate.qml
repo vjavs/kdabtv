@@ -1,17 +1,8 @@
-/*************************************************************************
- *
- * Copyright (c) 2013-2019, Klaralvdalens Datakonsult AB (KDAB)
- * All rights reserved.
- *
- * See the LICENSE.txt file shipped along with this file for the license.
- *
- *************************************************************************/
-
-import QtQuick 2.0
+import QtQuick 2.15
 
 Text {
     clip: true
-    text: model.name;
+    text: model.name
     font.pixelSize: 24
 
     property bool expanded: false
@@ -19,6 +10,6 @@ Text {
     height: expanded ? implicitHeight : 0
 
     Behavior on height {
-        NumberAnimation { duration:  200 }
+        NumberAnimation { duration: 200 }
     }
 }
