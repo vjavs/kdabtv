@@ -1,39 +1,37 @@
-/*************************************************************************
- *
- * Copyright (c) 2013-2019, Klaralvdalens Datakonsult AB (KDAB)
- * All rights reserved.
- *
- * See the LICENSE.txt file shipped along with this file for the license.
- *
- *************************************************************************/
-
-import QtQuick 2.0
+import QtQuick 2.15
 
 Rectangle {
     width: 150; height: 200; color: "white"
 
     ListModel {
         id: nameModel
-        ListElement { name: "Alice" }
-        ListElement { name: "Bob" }
-        ListElement { name: "Jane" }
-        ListElement { name: "Victor" }
-        ListElement { name: "Wendy" }
+	ListElement { age: 41; name: "Alice" }
+	ListElement { age: 42; name: "Bob" }
+	ListElement { age: 43; name: "Jane" }
+	ListElement { age: 44; name: "Victor" }
+	ListElement { age: 45; name: "Wendy" }
     }
 
     Component {
         id: nameDelegate
-        Text {
-            text: model.name
-            font.pixelSize: 32
+	Row {
+	    spacing: 15
+	    Text {
+	        text: model.name
+	        font.pixelSize: 32
+            }
+	    Text {
+	        text: model.age
+	        font.pixelSize: 30
+            }
         }
     }
 
     Column {
         anchors.fill: parent
-        Repeater {
-            model: nameModel
-            delegate: nameDelegate
+	Repeater {
+	    model: nameModel
+	    delegate: nameDelegate
         }
     }
 }
