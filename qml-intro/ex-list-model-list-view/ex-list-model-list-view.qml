@@ -1,39 +1,41 @@
-/*************************************************************************
- *
- * Copyright (c) 2013-2019, Klaralvdalens Datakonsult AB (KDAB)
- * All rights reserved.
- *
- * See the LICENSE.txt file shipped along with this file for the license.
- *
- *************************************************************************/
-
-import QtQuick 2.0
+import QtQuick 2.15
 
 Rectangle {
     width: 150; height: 200; color: "white"
 
     ListModel {
         id: nameModel
-        ListElement { name: "Alice" }
-        ListElement { name: "Bob" }
-        ListElement { name: "Jane" }
-        ListElement { name: "Victor" }
-        ListElement { name: "Wendy" }
+	ListElement { name: "Alice" }
+	ListElement { name: "Bob" }
+	ListElement { name: "Jane" }
+	ListElement { name: "Victor" }
+	ListElement { name: "Wendy" }
     }
 
     Component {
         id: nameDelegate
-        Text {
-            text: model.name;
-            font.pixelSize: 32
-        }
+	Rectangle {
+	    readonly property ListView __lv: ListView.view
+	    color: __lv.currentIndex == index ? "gray" : "yellow"
+	    implicitHeight: txt.implicitHeight
+	    anchors {left: parent.left; right: parent.right}
+	    Text {
+	        id: txt
+	        text: model.name
+	        font.pixelSize: 32
+            }
+	    MouseArea {
+	        anchors.fill: parent
+	        onClicked: __lv.currentIndex = index
+            }
+	}
     }
-    //--> slide
+
     ListView {
         anchors.fill: parent
-        model: nameModel
-        delegate: nameDelegate
-        clip: true
+	model: nameModel
+	delegate: nameDelegate
+	clip: true
+	onCurrentIndexChanged: console.log(currentIndex)
     }
-    //<-- slide
 }
